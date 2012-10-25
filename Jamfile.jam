@@ -1,0 +1,4 @@
+lib AsioQuickFix : [ glob *.cpp ] :
+ <library>/usr/local/lib/libquickfix.so
+;
+
