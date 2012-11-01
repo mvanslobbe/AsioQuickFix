@@ -1,3 +1,14 @@
+/*
+AsioQuickfix (c) by Michiel van Slobbe
+
+AsioQuickfix is licensed under a
+Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by-sa/3.0/>.
+*/
+
+
 #ifndef __SOCKET_INITIATOR_HPP
 #define __SOCKET_INITIATOR_HPP
 
@@ -38,6 +49,9 @@ namespace FIX
 		void start();
 		void stop();
 	private:
+		static const char * m_connection_type_label;
+		static const char * m_initiator_label;
+
 		boost::asio::io_service & m_service;
 		Application& m_application;
 		MessageStoreFactory& m_messageStoreFactory;

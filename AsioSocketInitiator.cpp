@@ -1,7 +1,20 @@
+/*
+AsioQuickfix (c) by Michiel van Slobbe
+
+AsioQuickfix is licensed under a
+Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by-sa/3.0/>.
+*/
+
 #include "AsioSocketInitiator.hpp"
 
 namespace FIX
 {
+	const char * AsioSocketInitiator::m_connection_type_label ( "ConnectionType" );
+	const char * AsioSocketInitiator::m_initiator_label ( "initiator" );
+
 	AsioSocketInitiator::AsioSocketInitiator( boost::asio::io_service & service, 
 		Application& application,
 		MessageStoreFactory& factory,
@@ -48,7 +61,7 @@ namespace FIX
 
 		for ( i = sessions.begin(); i != sessions.end(); ++i )
 		{
-			if ( m_settings.get( *i ).getString( "ConnectionType" ) == "initiator" )
+			if ( m_settings.get( *i ).getString( m_connection_type_label ).compare ( m_initiator_label ) == 0 )
 			{
 				m_sessions[ *i ] = factory.create( *i, m_settings.get( *i ) );
 				ConnectSession ( *i, m_settings.get( *i ) );

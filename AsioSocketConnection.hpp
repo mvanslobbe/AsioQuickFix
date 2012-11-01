@@ -1,3 +1,13 @@
+/*
+AsioQuickfix (c) by Michiel van Slobbe
+
+AsioQuickfix is licensed under a
+Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by-sa/3.0/>.
+*/
+
 #ifndef __ASIO_SOCKET_CONNECTION_HPP
 #define __ASIO_SOCKET_CONNECTION_HPP
 
@@ -42,6 +52,7 @@ namespace FIX
 		bool m_sending;
 
 		void StartSendAsync();
+		void StartSendAsync( char const * buf, size_t len );
 		void StartReadAsync();
 		void AsyncReadSocket( boost::system::error_code const & error_code, 
 			size_t len );
